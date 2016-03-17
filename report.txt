@@ -1,0 +1,222 @@
+/*
+	run main
+		create a mainMenu object menu
+		use the mainMenu constructor to create database, cashier, and report objects
+		call menu.fileLoadMenu()
+			ask the user if they want to specify where the file will be saved/loaded from
+			if yes, change default save location to the user input location
+			if no, use default location database.txt
+			check if the file exists already
+				if file already exists, check if it will open
+		call menu.showMainMenu()
+			present the user with choices to enter the choice of  2. Inventory Database Module 3. Report Module 4. Exit
+				get the users choice
+				run the main menu of the selected choice
+				if choice == 1 run cashier.mainMenu()
+				if choice == 2 run database->mainMenu()
+				if choice == 3 run report.mainMenu
+				if choice == 4 thank the user and return 0
+	if choice == 1
+		load the cashiers mainMenu()
+			present the user with options related to the cashier
+			if choice == 1 run addBookMenu()
+			if choice == 2 run checkout()
+			if choice == 3 run removeBookMenu()
+			if choice == 4 return to menu.showMainMenu()
+
+
+*/
+
+/*
+
+	report default constructor
+	{
+
+	}
+	report constructor
+	{
+		assign the database pointer
+	}
+	struct BooksWithIsbn userd for sorting the database by quantity
+	{
+		declare variables
+		create an array of book identifiers for use in counting quantity
+	}
+
+	main menu of the report module
+	{
+		do
+			clear the screen
+			present a list of different options to the user that the report module is capable of
+			if user input is valid
+				if choice == 1
+					run listInventory
+				else if choice == 2
+					run listRetailValue
+				else if choice == 3
+					run listWholesaleValue
+				else if choice == 4
+					run listAge
+				else if choice == 5
+					run listQuantity
+				else if choice == 6
+					run listCost
+				else if choice == 7
+					break
+				else
+					output Please enter a valid selection
+			else
+				output Plerase enter a valid selection
+		while choice does not equal 7
+	}
+
+	if the user selects list inventory
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		declare bool swap for use in loops
+
+		while swap
+			swap = false
+			for i equal to zero, i is less than size, increment i
+				if books title at the current i index is greater than the title at the next index
+					swap the books in the database
+		output the books in the inventory
+			for int i is equal to zero, i is less than size, increment i
+				loop through the database and output each book title, author, and isbn
+		wait until user is done with the info before continuing
+	}
+
+	if user selects list retail value
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		declare bool swap for use in loops
+
+		while swap
+			swap = false
+			for i equal to zero, i is less than size, increment i
+				if books retail value at the current i index is greater than the retail value at the next index
+					swap the books in the database
+		output the books in the inventory
+			for int i is equal to zero, i is less than size, increment i
+				loop through the database and output each books title, retail value and ISBN
+				while looping, calculate sum of retail value
+		output sum
+
+		wait until user is done with the info before continuing
+	}
+
+	if user selects list wholesale value
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		declare bool swap for use in loops
+
+		while swap
+			swap = false
+			for i equal to zero, i is less than size, increment i
+				if books wholesale value at the current i index is greater than the wholesale value at the next index
+					swap the books in the database
+		output the books in the inventory
+			for int i is equal to zero, i is less than size, increment i
+				loop through the database and output each books title, wholesale value and ISBN
+				while looping, calculate sum of wholesale value
+		output sum
+
+		wait until user is done with the info before continuing
+	}
+
+	if user selects list age
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		declare bool swap for use in loops
+
+		declare six string variables for holding the extracted day/month/year from the current index, and the next index
+
+		while swap
+			swap = false
+			for i equal to zero, i is less than database size minus one, increment i
+				for int j equals zero, j is less than database size, increment j
+					declare two new string variables
+					assign one to the current value of the date added of the current index i
+					assign one to the next value of the date added of the next index i
+					extract the month, day, and year from the string by using the previous 6 string variables with subscripts
+					switch the 6 strings to int by using stoi()
+					if the value in current year string is greater than the value in the next year string
+						swap the books
+					if the value of the two years are equal and the current month value is greater than the next month value
+						swap the books
+					if the value of the two years are equal and the value fo the two months is equal and the current day value is greater than the next day value
+						swap the books
+			output the books in the inventory
+		for int i is equal to zero, i is less than size, increment i
+			output date added, title and isbn
+		wait until user is done with the info before continuing
+	}
+
+	if user selects list cost
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		declare bool swap for use in loops
+
+		while swap
+			swap = false
+			for i equal to zero, i is less than size, increment i
+				if books wholesale value at the current i index is less than the wholesale value at the next index
+					swap the books in the database
+		output the books in the inventory
+			for int i is equal to zero, i is less than size, increment i
+			loop through the database and output each books title, wholesale value and ISBN
+			while looping, calculate sum of wholesale value
+		output sum
+
+	wait until user is done with the info before continuing
+	}
+
+	if user selects list quantity
+	{
+		clear the screen
+
+		copy the pointer to the book database
+		get the current size of the book database
+		create a new temporary array bookswithisbn[]
+		create local variable int numIsbns for use in the loops
+
+		for int i equal to zero, i is less than size, icrement i
+			assign bool foundisbn to false
+			for int j equal to zero, j is less than numisbns 
+				loop through the book database and get the book identifiers
+				get the quantity of each ISBN
+
+		declare local variable sorted and assign it to zero
+		while sorted is less than numIsbns minus one
+			declare two local variables maxLocation and maxValue
+			assign maxLocation to sorted
+			assign maxValue to isbndatabase[sorted],numBookIdentifiers
+			for int i equal to sorted, i is less than numIsbns, increment i
+				if isbnDatabase at index i is greater than the maxValue
+					assign i to maxLocation
+					assign the current quantity at index i to maxValue
+			swap the books if necessary
+		output the books in the book database by highest quantity first
+		for int i equal to zero, i is less than numIsbns, increment i
+			output the quantity, title, and ISBN of each book in the inventory
+
+		wait until user is done with the info before continuing
+	}
+
+
+*/
